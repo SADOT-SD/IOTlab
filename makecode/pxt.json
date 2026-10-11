@@ -1,0 +1,17 @@
+{
+    "name": "logtel-iot-lab",
+    "version": "0.0.1",
+    "description": "Logtel IoT lab (2026) - Day 3 Part 1 team template",
+    "dependencies": {
+        "core": "*",
+        "radio": "*",
+        "microphone": "*",
+        "ESP8266_IoT": "github:elecfreaks/pxt-esp8266iot#v2.3.2"
+    },
+    "files": [
+        "main.blocks",
+        "main.ts",
+        "README.md"
+    ],
+    "preferredEditor": "blocksprj"
+}
