@@ -1,7 +1,7 @@
 {
     "name": "logtel-iot-lab",
     "version": "0.0.1",
-    "description": "Logtel IoT lab (2026) - Day 3 Part 1 team template",
+    "description": "Logtel IoT lab (2026) - Day 4 Part 1 team template",
     "dependencies": {
         "core": "*",
         "radio": "*",

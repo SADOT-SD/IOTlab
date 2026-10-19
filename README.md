@@ -1,17 +1,17 @@
 # Logtel IoT course 2026
 
-Slides and lab files for the three-day IoT course (Logtel, October 2026).
+Slides and lab files for the IoT course (Logtel, October 2026): Days 1 and 2 and the Day 4 hands-on lab. Day 3 (cellular IoT and security) is taught by another lecturer.
 
 | File | What |
 |---|---|
-| [Day1_Foundations.pdf](Day1_Foundations.pdf) | Day 1 slides: what IoT is, networking basics, hardware interfaces, short-range wireless |
+| [Day1_Foundations.pdf](Day1_Foundations.pdf) | Day 1 slides: networking basics and Wi-Fi, Wireshark, hardware interfaces, what IoT is, Bluetooth, NFC, RFID, UWB |
 | [Day2_Technologies.pdf](Day2_Technologies.pdf) | Day 2 slides: architectures, connectivity, LoRaWAN, mesh, MQTT, Grafana, MakeCode |
-| [Day3_Hands-on_Lab.pdf](Day3_Hands-on_Lab.pdf) | Day 3 slides: AWS IoT Core, certificates, the six lab parts, troubleshooting |
-| [Day3_Lab_Guide.pdf](Day3_Lab_Guide.pdf) | Day 3 team lab guide: every step and every check |
+| [Day4_Hands-on_Lab.pdf](Day4_Hands-on_Lab.pdf) | Day 4 slides: AWS IoT Core, certificates, the six lab parts, troubleshooting |
+| [Day4_Lab_Guide.pdf](Day4_Lab_Guide.pdf) | Day 4 team lab guide: every step and every check |
 | [team_app.py](team_app.py) | Part 3: the team app that runs in AWS CloudShell |
 | [makecode/main.ts](makecode/main.ts) | Part 1: the micro:bit program (in class you get it as a MakeCode link) |
 
-## Day 3, Part 3: the CloudShell blocks
+## Day 4, Part 3: the CloudShell blocks
 
 Open CloudShell (the `>_` icon in the AWS console, Region N. Virginia) and paste one block at a time - the copy
 button is at the top right of each block. In block 1, change `teamNN` to your team, for example `team03`.

@@ -1,4 +1,4 @@
-// Logtel IoT lab (2026) - Day 3, Part 1: micro:bit V2 + ELECFREAKS IoT:bit V1.6 -> class gateway (MQTT).
+// Logtel IoT lab (2026) - Day 4, Part 1: micro:bit V2 + ELECFREAKS IoT:bit V1.6 -> class gateway (MQTT).
 // Extension: ESP8266_IoT v2.3.2 (github:elecfreaks/pxt-esp8266iot#v2.3.2). Same blocks as slides "Part 1a-1c".
 // The LECTURER fills <Logtel Wi-Fi> (if known) and <gateway> before sharing - never put a password in a shared project.
 // The TEAM changes teamNN (4 places), the Wi-Fi <password> (on the whiteboard) and the gateway password <on your card>.
