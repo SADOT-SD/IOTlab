@@ -45,7 +45,7 @@ ls
 **Block 4 - download the team app, install the MQTT library once, then run**
 
 ```bash
-R=https://raw.githubusercontent.com/samueldratwa-TG/logtel-iot-lab/main
+R=https://raw.githubusercontent.com/SADOT-SD/IOTlab/main
 curl -fsSLO $R/team_app.py
 pip3 install --user paho-mqtt
 python3 team_app.py $T $EP
