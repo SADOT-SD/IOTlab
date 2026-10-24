@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Logtel IoT lab - team access</title>
+<style>
+:root { --navy: #003366; --magenta: #CC0099; --steel: #5584A0; --bg: #F4F7FA; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--navy); font-family: Tahoma, Verdana, sans-serif; }
+main { max-width: 760px; margin: 0 auto; padding: 24px 16px 48px; }
+h1 { font-size: 26px; margin: 0 0 4px; }
+.sub { color: var(--steel); margin: 0 0 20px; }
+form, .card { background: #fff; border: 2px solid var(--magenta); border-radius: 8px; padding: 18px; }
+label { display: block; font-weight: bold; margin: 0 0 6px; }
+input, select { font: inherit; font-size: 18px; padding: 8px 10px; border: 1px solid var(--steel); border-radius: 6px;
+  width: 100%; margin-bottom: 14px; color: var(--navy); }
+button { font: inherit; font-weight: bold; border: 0; border-radius: 6px; padding: 9px 16px; cursor: pointer;
+  background: var(--navy); color: #fff; }
+button.copy { background: var(--magenta); padding: 6px 12px; font-size: 14px; }
+button.ghost { background: #fff; color: var(--navy); border: 1px solid var(--navy); }
+.err { color: #B00020; font-weight: bold; min-height: 1.4em; margin: 10px 0 0; }
+.card h2 { margin: 0 0 12px; font-size: 28px; color: var(--magenta); }
+.row { display: grid; grid-template-columns: 170px 1fr auto; gap: 10px; align-items: center;
+  padding: 8px 0; border-top: 1px solid #E3E9EF; }
+.row:first-of-type { border-top: 0; }
+.k { font-weight: bold; }
+.v { font-family: Consolas, "Courier New", monospace; font-size: 17px; word-break: break-all; }
+.note { color: var(--steel); font-size: 14px; margin: 14px 0 0; }
+.warn { background: #FFF4E5; border-left: 4px solid var(--magenta); padding: 8px 12px; margin: 0 0 14px; }
+@media (max-width: 560px) { .row { grid-template-columns: 1fr auto; } .row .k { grid-column: 1 / -1; } }
+</style></head>
+<body><main>
+<h1>Logtel IoT lab - team access</h1>
+<p class="sub">Day 4 lab. The passphrase is on the whiteboard.</p>
+<form id="f" autocomplete="off">
+  <label for="pp">Passphrase (from the whiteboard)</label>
+  <input id="pp" type="text" spellcheck="false" autocapitalize="off" placeholder="xxxx-xxxx-xxxx">
+  <label for="team">Your team</label>
+  <select id="team"></select>
+  <button type="submit" id="go">Open my card</button>
+  <p class="err" id="err"></p>
+</form>
+<div id="out" hidden></div>
+</main>
+<script>
+const BLOB = {"v": 1, "kdf": "PBKDF2-SHA256", "rounds": 600000, "salt": "a3HRxg34ahSqgrrqE3t4xQ==", "iv": "JZW+0sbA+rjvWTHw", "ct": "yMUcQpdakL5NQ2ibcjSK6644yGTp9D2Yo9V/cXAuTLzMwirPz9924ZINgYhpWG+o6tNgOFT3vCFEA5ifuFtAF6IHshyAavEuxWMYXk5oAFQYR61oeQMDHFvIf8Yxhr4UWcaVWV0M6Ut+aqeTqnKt5kIZ7qxCqV7QLojoNB7rOty9g5QFnT1QDNCCBiVOp5FmOkZpSAONd03xMAcPGBdhFeL5ND4NUUIAfuhi52A7RFSwX6mZd7XZ8NBQHPLKxfkSl9ub/FwCk/Pm0jIhWU7EgtUPBbQSkL7IByADqLodJUl9gzLQB+l+NLwEBa3VSEWP6FPsa7xXckdbWTmPebogRP5knVdsPNuIbHY0WH8txwh05HCGVmkMSlFcZSP2v7qAlfYA1vbTKSCtKdRUX99Sc6h3LIVRE/RIB2i1eXdP+TkVX/X8yBDBsIdcIAdKjlOAZ9kWKzxr3c5bfCpnWgCbZFpcZ/WPVIGbY9DF78tSJGFly/GlqOcjBDqgGKHj7cI2I2Q0EbLuXQeN6ROWleGWpSPVEPU8UWAgjN0M7niEj3E8wFVEAReF5YUDMFirsmpQKJN9MrY10YKqZoupBCEffZ/cOgurNHMYk1QVQGvSV+gAvmZi2gCukIFTGzMyB/1SkuPAwV4i8H4vVXV77CggjU6gYZo1G2nBrNfCkJX5TqWtjwRm7zMr0alJ621t80oT8QtIZhx+QA9RNNui/jVJKH54BnNiAUiq6ZXVSnpWnWRHHMBIL4klmasl/nBHsO+mmJQWek6/yq61vfq1AlhkjSBLazYOfYygYxl5jrv7z3qQbEZYrvSw36cLPm6+ldUoTbiaWo5wZkq6/u8gjiP47oYLCjswMS1JyHI/53oVVJ1shYwNU0Se1BMXjb9alirhQ3CiqB7h2OJ4QkhJLV2fOZNu/5z0j4b4QT74nq3U6jOBMtmFE2VRntYG5wYIvYKGX269PqXmEnDvyRzOEVLrOdHDRC7FaZzwwb37BQVK8T7aBCqexRbPrie6zQAf2k6etxPzMfgDsyDHGfDL6ZAWRBaQXzvIq6iaHoO+NIcewk0ZRMFpFZT7C/6AmKyDbaU0j0GdfSIqTTXb1yfb71n5IOQVxFTm983qHos3f+8ffhWhLknMz1g50Cmnw8Pna0dqUG26iMeCW7k+Hy1ZaCTu8pHv7gxJwSh9A5YKRtGqUF3rM4GkjU+lXSKbpgZN6NdANGQykruOt8bQhx8lfEbFkZnvSxqg40zWjvBqpEx/c0cVUdlVgj5qLN1rV0JDf5oVK0ydsgBirG7kp+01rH9lqkUlMdm2sGaTX2DmNY/P997qWZBw6vPUXgNHPHHxgs6mY876Y0HvEyQEq3oekwYT+qkKIqSx/GHKP6XcL4s3q4/AnVVDZA=="};
+const TEAMS = Array.from({length: 10}, (_, i) => "team" + String(i + 1).padStart(2, "0"));
+const $ = id => document.getElementById(id);
+TEAMS.forEach(t => $("team").add(new Option(t.replace("team", "Team "), t)));
+const b64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
+
+async function unlock(pass) {
+  const base = await crypto.subtle.importKey("raw", new TextEncoder().encode(pass), "PBKDF2", false, ["deriveKey"]);
+  const key = await crypto.subtle.deriveKey(
+    {name: "PBKDF2", salt: b64(BLOB.salt), iterations: BLOB.rounds, hash: "SHA-256"},
+    base, {name: "AES-GCM", length: 256}, false, ["decrypt"]);
+  const plain = await crypto.subtle.decrypt({name: "AES-GCM", iv: b64(BLOB.iv)}, key, b64(BLOB.ct));
+  return JSON.parse(new TextDecoder().decode(plain));
+}
+
+function copyText(text, btn) {
+  const done = () => { const o = btn.textContent; btn.textContent = "Copied"; setTimeout(() => btn.textContent = o, 1200); };
+  if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(text).then(done, () => fallback()); }
+  else { fallback(); }
+  function fallback() {
+    const ta = document.createElement("textarea"); ta.value = text; document.body.appendChild(ta); ta.select();
+    try { document.execCommand("copy"); done(); } catch (e) {} ta.remove();
+  }
+}
+
+function row(k, v, copy, link) {
+  const r = document.createElement("div"); r.className = "row";
+  const kk = document.createElement("div"); kk.className = "k"; kk.textContent = k;
+  const vv = document.createElement("div"); vv.className = "v";
+  if (link) { const a = document.createElement("a"); a.href = v; a.target = "_blank"; a.rel = "noopener"; a.textContent = v; vv.appendChild(a); }
+  else { vv.textContent = v; }
+  r.append(kk, vv);
+  if (copy) { const b = document.createElement("button"); b.type = "button"; b.className = "copy"; b.textContent = "Copy";
+    b.onclick = () => copyText(v, b); r.appendChild(b); } else { r.appendChild(document.createElement("span")); }
+  return r;
+}
+
+function show(d, team) {
+  const t = d.teams[team], out = $("out"); out.innerHTML = "";
+  const card = document.createElement("div"); card.className = "card";
+  const h = document.createElement("h2"); h.textContent = team.replace("team", "Team ");
+  const w = document.createElement("p"); w.className = "warn"; w.textContent = "Your team only. Do not project or share this page.";
+  card.append(h, w);
+  card.append(row("AWS console", d.signin, true, true), row("AWS user", team, true),
+    row("AWS password", t.aws_password, true), row("AWS Region", "N. Virginia (us-east-1)", false));
+  if (d.makecode) card.append(row("MakeCode template", d.makecode, true, true));
+  card.append(row("Wi-Fi name", d.wifi_ssid || "on the whiteboard", !!d.wifi_ssid),
+    row("Wi-Fi password", "on the whiteboard", false),
+    row("Gateway (host)", d.gateway, true), row("Gateway port", String(d.port), false),
+    row("Gateway user", team, true), row("Gateway password", t.gateway_password, true),
+    row("Send to topic", "lab/" + team + "/telemetry", true), row("Listen on topic", "lab/" + team + "/cmd", true));
+  const n = document.createElement("p"); n.className = "note";
+  n.textContent = "Two different passwords: the AWS password signs in to the console; the gateway password goes into MakeCode. Course page: " + d.course_page;
+  const hide = document.createElement("button"); hide.type = "button"; hide.className = "ghost"; hide.textContent = "Hide";
+  hide.onclick = () => { out.hidden = true; out.innerHTML = ""; $("f").hidden = false; };
+  card.append(n, hide); out.appendChild(card); out.hidden = false; $("f").hidden = true;
+}
+
+$("f").addEventListener("submit", async e => {
+  e.preventDefault(); $("err").textContent = ""; $("go").disabled = true; $("go").textContent = "Opening...";
+  try { show(await unlock($("pp").value.trim().toLowerCase()), $("team").value); }
+  catch (err) { $("err").textContent = window.isSecureContext === false ? "This browser blocks the decryption here - open the page over https." : "Wrong passphrase - check the whiteboard."; }
+  finally { $("go").disabled = false; $("go").textContent = "Open my card"; }
+});
+</script>
+</body></html>

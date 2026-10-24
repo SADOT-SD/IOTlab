@@ -2,6 +2,8 @@
 
 Slides and lab files for the IoT course (Logtel, October 2026): Days 1 and 2 and the Day 4 hands-on lab. Day 3 (cellular IoT and security) is taught by another lecturer.
 
+**Day 4 - your team card:** https://sadot-sd.github.io/IOTlab/cards.html (the passphrase is on the whiteboard; copy your passwords from there)
+
 | File | What |
 |---|---|
 | [Day1_Foundations.pdf](Day1_Foundations.pdf) | Day 1 slides: networking basics and Wi-Fi, Wireshark, hardware interfaces, what IoT is, Bluetooth, NFC, RFID, UWB |
@@ -54,4 +56,4 @@ python3 team_app.py $T $EP
 Type `heart` and press Enter to send a command to your micro:bit. If port 8883 is blocked:
 `python3 team_app.py $T $EP 443`.
 
-Passwords, private keys and team cards are never put here.
+No password is stored here in clear text: the team card page is encrypted and opens only with the passphrase from the whiteboard.
