@@ -12,6 +12,7 @@ Slides and lab files for the IoT course (Logtel, October 2026): Days 1 and 2 and
 | [Day4_Lab_Guide.pdf](Day4_Lab_Guide.pdf) | Day 4 team lab guide: every step and every check |
 | [team_app.py](team_app.py) | Part 3: the team app that runs in AWS CloudShell |
 | [makecode/main.ts](makecode/main.ts) | Part 1: the micro:bit program (in class you get it as a MakeCode link) |
+| [Day4_Extra_Sensors.md](Day4_Extra_Sensors.md) | Extra: send sound and movement readings too |
 
 ## Day 4, Part 3: the CloudShell blocks
 
